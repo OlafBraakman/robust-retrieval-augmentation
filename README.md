@@ -1,6 +1,8 @@
-# Retrieval augmentation for scale-sensitive scene classification tasks
+# Retrieval augmentation for Adversarial Robust Visual Classification
 
-This is the official repository for "Retrieval augmentation for scale-sensitive scene classification tasks"
+![Teaser image](assets/teaser.png "General overview")
+
+This is the official repository for "Retrieval augmentation for Adversarial Robust Visual Classification"
 
 # 1. Installation
 You can use Docker (1.1) or install manually (1.2).
@@ -16,18 +18,22 @@ This repository was built with **Python 3.11** and PyTorch Fabric, not sure if i
 Run `pip install -r requirements.txt`
 
 ## 2.3 Datasets
-This repository mainly works with the SUNRGB-D dataset
+This repo assumes local copies of the following datasets:
+* ImageNet
+* CIFAR-100
+* GTSRB
 
-Install here: TODO
+# 2. Approach
+![Overview](assets/overview.png)
 
-Extra analysis is done with InSpaceType
 
-Install here: TODO
+# 3. Reproducability
 
-# 2. Reproducability
+This repository has three main components: 
+1) Pre-computing image embeddings
+2) Training/evaluating models
+3) Attacking models
 
-This repository has two main components: 1) pre-computing image/depth embedding and 2) training/evaluating models
-
-## 2.1 Feature embedding
+## 3.1 Feature embedding
 
 `python src/embed.py --dataset [dataset] --model [model] --num-augmentations [num] --batch-size [num]`
