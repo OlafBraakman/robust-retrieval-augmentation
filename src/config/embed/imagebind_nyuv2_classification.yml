@@ -1,0 +1,11 @@
+task: "classification"
+tag: "classification"
+model:
+  backbone:
+    name: "imagebind_huge"
+    width: 224
+    height: 224
+dataset:
+  name: 'nyuv2_classification'
+  dir: '/data/datasets/NYUv2'
+  split: "train"

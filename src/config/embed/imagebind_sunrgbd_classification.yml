@@ -1,0 +1,11 @@
+task: "classification"
+tag: "classification"
+model:
+  backbone:
+    name: "imagebind_huge"
+    width: 224
+    height: 224
+    modality: 'image'
+dataset:
+  name: 'sunrgbd_classification'
+  split: "train"

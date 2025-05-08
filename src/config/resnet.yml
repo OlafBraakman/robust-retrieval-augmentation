@@ -1,0 +1,33 @@
+name: "gtsrb_restnet_50"
+use_embeddings: True
+wandb_project: "robust-retrieval-augmentation-gtsrb"
+dataset:
+  dir: "/data/datasets/GTSRB/GTSRB"
+  name: 'gtsrb_classification'
+  tag: ['image', 'resnet_50', classification]
+model:
+  input_modality: "image"
+  backbone:
+    name: "resnet_50"
+    width: 224
+    height: 224
+    # use_embeddings: True
+  retrieval_augmentation:
+    name: "robust_augmentation"
+    key: "image"
+    key_tag: ['image', 'resnet_50', 'classification']
+    value: "image"
+    value_tag: ['image', 'resnet_50', 'classification']
+    alpha: 0.0
+    temperature: 0.00005
+  head:
+    name: "classification_head"
+    input_dim: 2048
+    hidden_dims: [512]
+    output_dim: 43
+    dropout: 0.5
+optimizer:
+  epochs: 15
+  warmup: 2
+  lr: 0.001
+    

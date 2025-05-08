@@ -1,0 +1,35 @@
+name: "imagenet_dinov2_large"
+use_embeddings: True
+wandb_project: "robust-retrieval-augmentation-imagenet"
+dataset:
+  dir: "/data/datasets/ImageNet"
+  name: 'imagenet_classification'
+  tag: ['image','dinov2_large','classification']
+model:
+  input_modality: "image"
+  backbone:
+    name: "dinov2_large"
+    width: 224
+    height: 224
+  retrieval_augmentation:
+    name: "robust_augmentation"
+    key: "image"
+    key_tag: ['image', 'dinov2_large', 'classification']
+    value: "image"
+    value_tag: ['image', 'dinov2_large', 'classification']
+    alpha: 0.0
+    temperature: 0.0001
+    subset: '/project/src/data/datasets/imagenet/subset50000.pt'
+  head:
+    name: "classification_head"
+    input_dim: 1024
+    hidden_dims: [1024]
+    output_dim: 1000
+    dropout: 0.5
+optimizer:
+  epochs: 6
+  warmup: 1
+  lr: 0.0001
+  weight_decay: 0.01
+  # lr: 0.0005
+    

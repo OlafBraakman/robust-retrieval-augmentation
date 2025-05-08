@@ -1,0 +1,11 @@
+tag: "classification"
+model:
+  backbone:
+    name: "imagebind_huge"
+    width: 224
+    height: 224
+dataset:
+  name: 'mitindoor_classification'
+  split: "train"
+  dir: "/data/datasets/MITIndoor"
+

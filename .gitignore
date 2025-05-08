@@ -1,0 +1,17 @@
+*.pyc
+.vscode
+.idea
+__pycache__
+output/
+wandb/
+old/
+*.pt
+
+.checkpoints/
+trained_models/
+lightning_logs/
+retrieval-augmentation/
+/attacks/
+/omnivore
+/runs
+/models

@@ -1,0 +1,23 @@
+services:
+    retrieval-augmentation:
+      container_name: retrieval-augmentation
+      shm_size: '16gb'
+      runtime: nvidia
+      command: bash -c 'env > /root/.ssh/environment && /usr/sbin/sshd -D' #&& jupyter lab --no-browser --allow-root --port=8888 --ip=0.0.0.0 --config=/project/docker/jupyter_notebook_config.py
+      image: "retrieval-augmentation:latest"
+      ports:
+      - $PORT:22
+      # - $PORT_NOTEBOOK:8888
+      environment:
+      - HOME=$HOME
+      - USER=$USER
+      - NVIDIA_VISIBLE_DEVICES=0,1 # gpu numbers if gpu0 then 0, if gpu1 then 1
+      - CUDA_DEVICE_ORDER=PCI_BUS_ID # Prevent using different order definition in CUDA applications
+      volumes:
+      - $HOME:$HOME
+      - $PWD:/project
+      - /usr/local/certificates:/certificates
+      - $HOME/.ssh/authorized_keys:/root/.ssh/authorized_keys
+      - /data/$USER:/data
+      - /common/$USER:/common
+version: '2.3'

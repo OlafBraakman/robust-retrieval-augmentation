@@ -1,0 +1,36 @@
+name: "cifar100_dinov2_large"
+use_embeddings: True
+wandb_project: "robust-retrieval-augmentation-cifar100"
+dataset:
+  dir: "/data/datasets/CIFAR100"
+  name: 'cifar100_classification'
+  # dir: "/data/datasets/GTSRB/GTSRB"
+  # name: 'gtsrb_classification'
+  tag: ['image','dinov2_large','classification']
+model:
+  input_modality: "image"
+  backbone:
+    name: "dinov2_large"
+    width: 224
+    height: 224
+  retrieval_augmentation:
+    name: "robust_augmentation"
+    key: "image"
+    key_tag: ['image', 'dinov2_large', 'classification']
+    value: "image"
+    value_tag: ['image', 'dinov2_large', 'classification']
+    alpha: 1.0
+    temperature: 0.0001
+  head:
+    name: "classification_head"
+    input_dim: 1024
+    hidden_dims: [512]
+    output_dim: 100
+    dropout: 0.5
+optimizer:
+  epochs: 30
+  warmup: 5
+  lr: 0.0001
+  weight_decay: 0.02
+  # lr: 0.0005
+    

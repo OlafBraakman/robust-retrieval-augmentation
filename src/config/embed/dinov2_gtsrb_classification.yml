@@ -1,0 +1,11 @@
+tag: "classification"
+model:
+  backbone:
+    name: "dinov2_large"
+    width: 224
+    height: 224
+dataset:
+  name: 'gtsrb_classification'
+  split: "train"
+  dir: "/data/datasets/GTSRB/GTSRB"
+
